@@ -1,0 +1,37 @@
+<!--pages/search/search.wxml-->
+<!-- 搜索框 -->
+<view>
+    <view>
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <!-- 搜索框 -->
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" value="{{searchText}}" placeholder="搜索想要的商品" bindinput="searchText" />
+                </view>
+            </view>
+            <!-- 搜索按钮,调用搜索查询方法 -->
+            <view class="weui-search-bar__cancel-btn" bindtap='toSearch'>搜索</view>
+        </view>
+    </view>
+</view>
+<!-- 搜索词 -->
+<view style="float: left;"  class="{{historyTagShowView?'common_view_show':'common_view_hide'}}">
+    <!-- 历史搜索词 -->
+    <view>
+        <text style="color: gray;font-size: small;margin: 20rpx;">历史搜索</text>
+    </view>
+    <view style="padding: 20rpx;">
+        <text class="tag" wx:for="{{historyWord}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+    </view>
+</view>
+<!-- 热搜词 -->
+<view style="float: left;" class="{{hotTagShowView?'common_view_show':'common_view_hide'}}">
+    <!-- 热门搜索词 -->
+    <view>
+        <text style="color: gray;font-size: small;margin: 20rpx;">热门搜索</text>
+    </view>
+    <view style="padding: 20rpx;">
+        <text class="tag" wx:for="{{hotWord}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/search/search",
+        "pages/goodsDetail/goodsDetail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#e74c3c",
+        "navigationBarTitleText": "捡漏王Mini",
+        "navigationBarTextStyle": "white"
+    },
+    "networkTimeout": {
+        "request": 5000
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

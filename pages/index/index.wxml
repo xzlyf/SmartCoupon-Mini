@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<!-- 搜索框 -->
+<view>
+  <view>
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <!-- 搜索框 -->
+        <view id="searchBar" class="weui-search-bar__box" bindtap="toPage">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <text id="searchBarText" class="weui-search-bar__input" bindtap="toPage">搜索想要的商品</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--轮播图-->
+<view class="banner">
+  <swiper class="banner-swiper" indicator-dots="true" indicator-color="#c0c0c0" indicator-active-color="#696969" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for-items="{{bannerData}}" wx:key="unquie">
+      <swiper-item data-id="{{item.topicId}}" data-url="{{item.link}}">
+        <image src="{{item.topicImage}}" class="banner-image" mode="aspectFit" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!-- 商品列表 -->
+<scroll-view class="goods-scroll-view" scroll-y="true" enable-back-to-top="true">
+  <view class="goods-view" wx:for="{{goodsData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}">
+    <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.mainPic}}"></image>
+    <text class="goods-dtitle">{{item.dtitle}}</text>
+    <text class="goods-sym">￥</text>
+    <text class="goods-actual">{{item.actualPrice}}</text>
+    <text class="goods-plan">卷后价</text>
+    <text class="goods-original">￥{{item.originalPrice}}</text>
+  </view>
+</scroll-view>
