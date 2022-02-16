@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -7,11 +8,46 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
-.common_view_hide{
+}
+
+.common_view_hide {
   display: none;
 }
 
-.common_view_show{
+.common_view_show {
   display: block;
+}
+
+
+/* 阿里字体库 图标 */
+@font-face {
+  font-family: 'iconfont';
+  /* project id 3187697 */
+  src: url('');
+  src: url('?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.woff') format('woff'),
+    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.ttf') format('truetype'),
+    url('#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 60rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuotianchong:before {
+  content: "\e694";
+}
+
+.icon-31fanhui1:before {
+  content: "\e600";
+}
+
+.icon-gouwuche:before {
+  font-size: 36rpx;
+  content: "\e606";
 }

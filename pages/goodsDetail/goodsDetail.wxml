@@ -1,0 +1,53 @@
+<!--pages/goodsDetail/goodsDetail.wxml-->
+
+<view>
+    <scroll-view>
+
+        <view class="banner">
+            <swiper class="banner-swiper" indicator-dots="true" indicator-color="#c0c0c0" indicator-active-color="#696969" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                <block wx:for-items="{{pics}}" wx:key="unquie">
+                    <swiper-item>
+                        <image src="{{item}}" class="banner-image" mode="aspectFill" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="content">
+            <text class="content-title">{{detail.title}}</text>
+            <view class="content-price">
+                <text class="goods-sym">￥</text>
+                <text class="goods-actual">{{detail.actualPrice}}</text>
+                <text class="goods-plan"> 卷后价</text>
+                <text class="goods-original">￥{{detail.originalPrice}}</text>
+                <text class="goods-sale">月销{{detail.monthSales}}件</text>
+            </view>
+            <view class="{{showGiftView?'content-gift':'common_view_hide'}}">
+                <text class="gift-name">优惠</text>
+                <text class="gift-item" wx:for="{{detail.specialText}}" wx:key="unique">{{item}}</text>
+            </view>
+        </view>
+        <view class="content-desc">
+            <text class="content-desc-item">商家信息</text>
+            <text class="content-desc-text">{{detail.shopName}}</text>
+        </view>
+        <view class="content-desc">
+            <text class="content-desc-item">商品详情</text>
+            <text class="content-desc-text">{{detail.desc}}</text>
+        </view>
+        <!-- 空白view预留显示 -->
+        <view style="height: 100rpx;" />
+    </scroll-view>
+
+
+    <!-- 底部控制区 -->
+    <view class="footer-box">
+        <view class="cart">
+            <icon class="iconfont icon-gouwuche"></icon>
+            <text style="line-height: 110rpx;">收藏</text>
+        </view>
+        <view class="planBtn">
+            <text class="couponBtn">立即领卷</text>
+            <text class="shareBtn">分享拿佣金</text>
+        </view>
+    </view>
+</view>

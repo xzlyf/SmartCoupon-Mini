@@ -1,0 +1,168 @@
+/* pages/goodsDetail/goodsDetail.wxss */
+page {
+    background-color: rgb(233, 233, 233);
+}
+
+/* ----------banner 样式----------- */
+.banner {
+    width: 100%;
+    height: 460rpx;
+}
+
+.banner-swiper {
+    width: 100%;
+    height: 460rpx;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* 内容主体样式 */
+.content {
+    padding: 10rpx;
+    background-color: white;
+}
+
+.content-title {
+    color: rgb(58, 58, 58);
+    font-weight: 800;
+    font-size: 34rpx;
+    display: block;
+}
+
+.content-desc {
+    margin: 15rpx;
+    display: block;
+    background-color: white;
+    padding: 15rpx;
+    border-radius: 15rpx;
+}
+
+.content-desc-item {
+    font-size: 30rpx;
+    color: rgb(58, 58, 58);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 15rpx;
+}
+
+.content-desc-text {
+    font-size: 28rpx;
+    color: rgb(94, 94, 94);
+    display: inline-block;
+}
+
+.content-price {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.goods-sym {
+    color: #e74c3c;
+    font-size: 28rpx;
+    margin-left: 20rpx;
+    font-weight: bold;
+}
+
+.goods-actual {
+    color: #e74c3c;
+    font-size: 48rpx;
+    font-weight: bolder;
+
+}
+
+.goods-plan {
+    color: #e74c3c;
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-right: 20rpx;
+}
+
+.goods-original {
+    color: gray;
+    font-size: 28rpx;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.goods-sale {
+    color: gray;
+    font-size: 28rpx;
+    float: right;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+}
+
+.content-gift {
+    margin-left: 20rpx;
+    padding: 8rpx;
+    position: relative;
+}
+
+.gift-name {
+    font-size: 30rpx;
+    color: rgb(58, 58, 58);
+    font-weight: 800;
+    margin-right: 40rpx;
+    float: left;
+}
+
+.gift-item {
+    color: rgb(134, 134, 134);
+    font-size: 28rpx;
+}
+
+.gift-item::before {
+    content: " ☑ ";
+}
+
+.footer-box {
+    width: 100%;
+    height: 110rpx;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    box-shadow: 0 0 4rpx #242424;
+}
+
+.planBtn {
+    position: absolute;
+    right: 0;
+}
+
+.shareBtn {
+    width: 280rpx;
+    height: 110rpx;
+    background-color: #FF9800;
+    color: white;
+    text-align: center;
+    line-height: 110rpx;
+    float: right;
+}
+
+.couponBtn {
+    width: 280rpx;
+    height: 110rpx;
+    background-color: #e74c3c;
+    color: white;
+    text-align: center;
+    line-height: 110rpx;
+    float: right;
+}
+
+.cart {
+    width: 150rpx;
+    height: 110rpx;
+    text-align: center;
+    line-height: 80rpx;
+}
