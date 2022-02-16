@@ -69,5 +69,4 @@
         <view class="secretText">{{secretText}}</view>
         <view bindtap="okBtn" class="ok" data-secret="{{secretText}}">复制淘口令</view>
     </view>
-    <view bindtap="btn" class="btn">弹窗</view>
 </view>

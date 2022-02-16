@@ -68,7 +68,6 @@ Page({
                     pics: picsArry,
                     showGiftView: self.data.showGiftView
                 })
-                console.log(self.data.detail)
 
             },
             fail: function (ex) {
@@ -108,7 +107,6 @@ Page({
             },
             success: function (res) {
                 wx.hideLoading()
-                console.log(res)
                 if (res.statusCode != 200) {
                     wx.showToast({
                         title: 'API异常',
@@ -152,25 +150,25 @@ Page({
     /**
      * 点击遮罩层自动取消对话框
      */
-    cancelMask:function(){
+    cancelMask: function () {
         this.setData({
-            showModal:false,
-            secretText:''
+            showModal: false,
+            secretText: ''
         })
     },
     /**
      * 复制到剪贴板
      */
-    okBtn:function(v){
+    okBtn: function (v) {
         var self = this;
         wx.setClipboardData({
-          data: 'v.currentTarget.dataset.secret',
-          complete:function(){
-            self.setData({
-                  showModal:false,
-                  secretText:''
-              })
-          }
+            data: v.currentTarget.dataset.secret,
+            complete: function () {
+                self.setData({
+                    showModal: false,
+                    secretText: ''
+                })
+            }
         })
     }
 
