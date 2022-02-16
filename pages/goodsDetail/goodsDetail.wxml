@@ -46,8 +46,28 @@
             <text style="line-height: 110rpx;">收藏</text>
         </view>
         <view class="planBtn">
-            <text class="couponBtn">立即领卷</text>
+            <text class="couponBtn" bindtap="couponClick" data-goodsid="{{detail.goodsId}}">立即领卷</text>
             <text class="shareBtn">分享拿佣金</text>
         </view>
     </view>
+
+    <!-- 遮罩层 -->
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="cancelMask"></view>
+    <!-- 弹出层 -->
+    <view class="modalDlg" wx:if="{{showModal}}">
+        <view class="dialogTitle">
+            <text style="margin-left: 20rpx;">优惠券已生成</text>
+        </view>
+        <view class="dialogContent">
+            <text style="font-weight: bold;color: black;">暂不支持跳转淘宝APP</text>
+            <text>手动领卷步骤：</text>
+            <text>①复制淘口令</text>
+            <text>②打开手机淘宝APP</text>
+            <text>③等待淘口令识别</text>
+            <text>④领取即可</text>
+        </view>
+        <view class="secretText">{{secretText}}</view>
+        <view bindtap="okBtn" class="ok" data-secret="{{secretText}}">复制淘口令</view>
+    </view>
+    <view bindtap="btn" class="btn">弹窗</view>
 </view>
