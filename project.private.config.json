@@ -14,8 +14,8 @@
             "list": [
                 {
                     "name": "单独页面调试",
-                    "pathName": "pages/goodsDetail/goodsDetail",
-                    "query": "id=37258988",
+                    "pathName": "pages/searchTarget/target",
+                    "query": "keyword=数据线",
                     "scene": null,
                     "launchMode": "default"
                 }

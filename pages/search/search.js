@@ -9,7 +9,7 @@ Page({
         hotTagShowView: false,
         historyTagShowView: false,
         //相关词
-        historyWord: [],
+        historyWords: [],
         hotWord: [],
         searchText: '',
     },
@@ -22,7 +22,7 @@ Page({
         var temp = wx.getStorageSync(app.globalData.save_history_word)
         if (temp != "") {
             this.setData({
-                "historyWord": temp,
+                "historyWords": temp,
                 "historyTagShowView":true
             })
         }
@@ -118,17 +118,20 @@ Page({
             return
         }
         //在数组第一位插入
-        this.data.historyWord.splice(0, 0, this.data.searchText)
-        if (this.data.historyWord.length >= 15) {
-            this.data.historyWord.pop()
+        this.data.historyWords.splice(0, 0, this.data.searchText)
+        if (this.data.historyWords.length >= 15) {
+            this.data.historyWords.pop()
         }
-        wx.setStorageSync(app.globalData.save_history_word, this.data.historyWord)
+        wx.setStorageSync(app.globalData.save_history_word, this.data.historyWords)
         this.setData({
-            "historyWord": this.data.historyWord,
+            "historyWords": this.data.historyWords,
             "historyTagShowView":true
         })
 
-
+        //跳转结果页
+        wx.redirectTo({
+          url: '../searchTarget/target?keyword='+this.data.searchText,
+        })
     }
 
 

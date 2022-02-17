@@ -27,7 +27,6 @@ Page({
      *在触发距离内滑动期间，本事件只会被触发一次。
      */
     onReachBottom: function () {
-        console.log("出发")
         this.getGoods()
     },
 
@@ -124,6 +123,7 @@ Page({
                         content: 'OpenApi Code=' + res.data.code + '\r\nMsg=' + res.data.msg,
                         showCancel: false
                     })
+                    self.data.pageNum-- //请求失败，复原页数
                     return
                 }
                 var data = res.data.data
@@ -150,6 +150,7 @@ Page({
                     content: "当前与服务器网络通信失败\r\n请检查网络后重试",
                     showCancel: false
                 })
+                self.data.pageNum-- //请求失败，复原页数
             }
         })
     },

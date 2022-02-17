@@ -22,7 +22,7 @@
         <text style="color: gray;font-size: small;margin: 20rpx;">历史搜索</text>
     </view>
     <view style="padding: 20rpx;">
-        <text class="tag" wx:for="{{historyWord}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+        <text class="tag" wx:for="{{historyWords}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
     </view>
 </view>
 <!-- 热搜词 -->

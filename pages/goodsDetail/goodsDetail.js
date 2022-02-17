@@ -59,6 +59,9 @@ Page({
                 if (imgsArrays.length > 0) {
                     picsArry = picsArry.concat(imgsArrays)
                 }
+                //时间格式处理yyyy-MM-dd
+                data.couponEndTime = data.couponEndTime.split(' ')[0]
+                data.couponStartTime = data.couponStartTime.split(' ')[0]
 
                 if (data.specialText.length > 0) {
                     self.data.showGiftView = true
