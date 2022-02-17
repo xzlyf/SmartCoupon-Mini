@@ -25,6 +25,8 @@ page {
     margin: auto;
 }
 
+
+
 /* 内容主体样式 */
 .content {
     padding: 10rpx;
@@ -45,6 +47,7 @@ page {
     padding: 15rpx;
     border-radius: 15rpx;
 }
+
 
 .content-desc-item {
     font-size: 30rpx;
@@ -144,7 +147,7 @@ page {
     width: 280rpx;
     height: 110rpx;
     /* background-color: #FF9800; */
-    background-image: linear-gradient(to right,#fc4a1a,#f7b733);
+    background-image: linear-gradient(to right, #fc4a1a, #f7b733);
     color: white;
     text-align: center;
     line-height: 110rpx;
@@ -154,7 +157,7 @@ page {
 .couponBtn {
     width: 280rpx;
     height: 110rpx;
-    background-image: linear-gradient(to right,#fc5d4c,#e74c3c);
+    background-image: linear-gradient(to right, #fc5d4c, #e74c3c);
     color: white;
     text-align: center;
     line-height: 110rpx;

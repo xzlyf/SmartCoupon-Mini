@@ -27,6 +27,19 @@
             </view>
         </view>
         <view class="content-desc">
+            <view style="width: 180rpx;text-align: center;display: inline-block;border-right:1px dashed gray;">
+                <text style="font-size: 40rpx;font-weight: 800;color:#e74c3c;">{{detail.couponPrice}}</text>
+                <text style="color:#e74c3c;font-size: 22rpx;">元</text>
+                <text style="display: block;font-size: 22rpx;color: gray;">满{{detail.originalPrice}}元可用</text>
+            </view>
+            <view style="display: inline-block;margin-left: 24rpx;">
+                <text style="display: block;font-size: 32rpx;color: #5a5a5a;font-weight: 600;">专享优惠券</text>
+                <text style="font-size: 22rpx;color: gray;">2022-02-15</text>
+                <text>-</text>
+                <text style="font-size: 22rpx;color: gray;">2022-02-18</text>
+            </view>
+        </view>
+        <view class="content-desc">
             <text class="content-desc-item">商家信息</text>
             <text class="content-desc-text">{{detail.shopName}}</text>
         </view>

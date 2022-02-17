@@ -15,7 +15,7 @@
                 {
                     "name": "单独页面调试",
                     "pathName": "pages/goodsDetail/goodsDetail",
-                    "query": "id=37230864",
+                    "query": "id=37258988",
                     "scene": null,
                     "launchMode": "default"
                 }

@@ -21,14 +21,10 @@
 
 /* 阿里字体库 图标 */
 @font-face {
-  font-family: 'iconfont';
-  /* project id 3187697 */
-  src: url('');
-  src: url('?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.woff') format('woff'),
-    url('//at.alicdn.com/t/font_3187697_2vl4ejvu7rm.ttf') format('truetype'),
-    url('#iconfont') format('svg');
+  font-family: 'iconfont';  /* Project id 3187697 */
+  src: url('//at.alicdn.com/t/font_3187697_6nf56vks8r.woff2?t=1645066025791') format('woff2'),
+       url('//at.alicdn.com/t/font_3187697_6nf56vks8r.woff?t=1645066025791') format('woff'),
+       url('//at.alicdn.com/t/font_3187697_6nf56vks8r.ttf?t=1645066025791') format('truetype');
 }
 
 .iconfont {
@@ -51,3 +47,4 @@
   font-size: 36rpx;
   content: "\e606";
 }
+
