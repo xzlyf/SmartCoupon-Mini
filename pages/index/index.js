@@ -156,31 +156,28 @@ Page({
     },
 
     /**
-     * 跳转页面
+     * 跳转搜索页面
      */
     toPage: function (view) {
-        var id = view.target.id
-        switch (id) {
-            case 'searchBarText':
-            case 'searchBar':
-                wx.navigateTo({
-                    url: '../search/search',
-                })
-                wx.setNavigationBarTitle({
-                    title: '搜索',
-                })
-                break
-        }
+        wx.navigateTo({
+            url: '../search/search',
+        })
+        wx.setNavigationBarTitle({
+            title: '搜索',
+        })
     },
 
     /**
      * 跳转商品详情页
      * @param goodsId  淘宝商品Id
      */
-    toGoodsDetail:function(goodsId){
-        //goodsId.currentTarget.dataset.id
+    toGoodsDetail: function (v) {
+        //商品单品详情数据，详情页不再新请求详情数据
+        // this.data.goodsData.list[v.currentTarget.dataset.index]
+        //序列化数据进行传输给详情页，先json编码然后url在此编码传输
+        var bean = encodeURIComponent(JSON.stringify(this.data.goodsData.list[v.currentTarget.dataset.index]))
         wx.navigateTo({
-          url: '../goodsDetail/goodsDetail?id='+goodsId.currentTarget.dataset.id,
+            url: '../goodsDetail/goodsDetail?bean=' + bean,
         })
     }
 

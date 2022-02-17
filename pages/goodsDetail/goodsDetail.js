@@ -24,8 +24,12 @@ Page({
      */
     onLoad: function (options) {
         //传授传入的商品id
-        this.data.id = options.id
-        this.getGoodsDetail();
+        // this.data.id = options.id
+        // this.getGoodsDetail();
+
+        //URL解码后进行JSON解析获取传入的详情数据
+        var data = JSON.parse(decodeURIComponent(options.bean))
+        this.getGoodsDetailByStorage(data)
     },
 
     /**
@@ -36,7 +40,31 @@ Page({
     },
 
     /**
-     * 获取商品详情
+     * 通过本地传入的数据进行展示
+     * 不通过线上获取详情数据
+     * @param {Object} data 数据源
+     */
+    getGoodsDetailByStorage: function (data) {
+        //手动获取图片展示图
+        var picsArry = []
+        picsArry.push(data.mainPic)
+        picsArry.push(data.marketingMainPic)
+        //时间格式处理yyyy-MM-dd
+        data.couponEndTime = data.couponEndTime.split(' ')[0]
+        data.couponStartTime = data.couponStartTime.split(' ')[0]
+
+        if (data.specialText.length > 0) {
+            self.data.showGiftView = true
+        }
+        this.setData({
+            detail: data,
+            pics: picsArry,
+            showGiftView: this.data.showGiftView
+        })
+    },
+
+    /**
+     * 在线获取商品详情
      */
     getGoodsDetail: function () {
         var self = this

@@ -27,7 +27,7 @@
 
 <!-- 商品列表 -->
 <scroll-view class="goods-scroll-view" scroll-y="true" enable-back-to-top="true">
-  <view class="goods-view" wx:for="{{goodsData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}">
+  <view class="goods-view" wx:for="{{goodsData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}" data-index="{{index}}">
     <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.mainPic}}"></image>
     <text class="goods-dtitle">{{item.dtitle}}</text>
     <text class="goods-sym">￥</text>
