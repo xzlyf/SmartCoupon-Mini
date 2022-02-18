@@ -3,7 +3,6 @@
         "pages/index/index",
         "pages/search/search",
         "pages/goodsDetail/goodsDetail",
-        "pages/searchTarget/target",
         "pages/jd_coupon/index",
         "pages/testPage/test"
     ],

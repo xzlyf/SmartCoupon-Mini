@@ -1,4 +1,7 @@
 /* pages/search/search.wxss */
+page{
+  background-color: rgb(240, 240, 240);
+}
 .searchBar {
   width: 100%;
   background-color: #e74c3c;
@@ -86,8 +89,6 @@
   white-space: nowrap;
 }
 .tag{
-    width: auto;
-    height: auto;
     background-color: rgb(224, 224, 224);
     color: rgb(145, 145, 145);
     padding: 5rpx 10rpx 5rpx 10rpx;
@@ -95,5 +96,66 @@
     font-size: 12px;
     margin-right: 20rpx;
     margin-bottom: 20rpx;
-    float: left;
+    display: inline-block;
+}
+ /* ----------商品列表样式------------- */
+ .goods-scroll-view {
+  width: 100%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+.goods-view {
+  width: 325rpx;
+  height: auto;
+  padding: 17rpx;
+  border-radius: 15rpx;
+  background-color: white;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  float: left;
+}
+
+.goods-img {
+  width: 320rpx;
+  height: 320rpx;
+  border-radius: 20rpx;
+}
+
+.goods-dtitle {
+  font-size: 28rpx;
+  width: 340rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  /* 多出不分隐藏 */
+  overflow: hidden;
+  /* 竖直方向的超出和隐藏 */
+  -webkit-box-orient: vertical;
+  /* 设定行数为1 */
+  -webkit-line-clamp: 1;
+}
+
+.goods-sym {
+  color: #e74c3c;
+  margin-left: 20rpx;
+}
+
+.goods-actual {
+  color: #e74c3c;
+  font-size: 38rpx;
+  font-weight: bold;
+
+}
+
+.goods-plan {
+  color: #e74c3c;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+
+.goods-original {
+  color: gray;
+  font-size: 24rpx;
+  text-decoration: line-through
 }

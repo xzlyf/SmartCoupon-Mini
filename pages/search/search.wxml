@@ -7,34 +7,47 @@
         </block>
     </view>
     <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <!-- 搜索框 -->
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" value="{{searchText}}" placeholder="搜索想要的商品" bindinput="searchText" />
-                </view>
+        <view class="weui-search-bar__form">
+            <!-- 搜索框 -->
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" value="{{searchText}}" placeholder="搜索想要的商品" bindinput="searchText" />
             </view>
-            <!-- 搜索按钮,调用搜索查询方法 -->
-            <view class="weui-search-bar__cancel-btn" bindtap='toSearch'>搜索</view>
         </view>
-</view>
-<!-- 搜索词 -->
-<view style="float: left;"  class="{{historyTagShowView?'common_view_show':'common_view_hide'}}">
-    <!-- 历史搜索词 -->
-    <view>
-        <text style="color: gray;font-size: small;margin: 20rpx;">历史搜索</text>
-    </view>
-    <view style="padding: 20rpx;">
-        <text class="tag" wx:for="{{historyWords}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="weui-search-bar__cancel-btn" bindtap='toSearch'>搜索</view>
     </view>
 </view>
-<!-- 热搜词 -->
-<view style="float: left;" class="{{hotTagShowView?'common_view_show':'common_view_hide'}}">
-    <!-- 热门搜索词 -->
-    <view>
-        <text style="color: gray;font-size: small;margin: 20rpx;">热门搜索</text>
+<view class="{{tagShowView?'common_view_show':'common_view_hide'}}">
+    <!-- 搜索词 -->
+    <view class="{{historyTagShowView?'common_view_show':'common_view_hide'}}">
+        <!-- 历史搜索词 -->
+        <view>
+            <text style="color: rgb(75, 75, 75);font-size: small;margin: 20rpx;">历史搜索</text>
+        </view>
+        <view style="padding: 20rpx;">
+            <text class="tag" wx:for="{{historyWords}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+        </view>
     </view>
-    <view style="padding: 20rpx;">
-        <text class="tag" wx:for="{{hotWord}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+    <!-- 热搜词 -->
+    <view class="{{hotTagShowView?'common_view_show':'common_view_hide'}}">
+        <!-- 热门搜索词 -->
+        <view>
+            <text style="color: rgb(75, 75, 75);font-size: small;margin: 20rpx;">热门搜索</text>
+        </view>
+        <view style="padding: 20rpx;">
+            <text class="tag" wx:for="{{hotWord}}" wx:key="unique" bindtap="historyTag" data-tag="{{item}}">{{item}}</text>
+        </view>
     </view>
 </view>
+<!-- 商品列表 -->
+<scroll-view class="goods-scroll-view" scroll-y="true" enable-back-to-top="true">
+    <view class="goods-view" wx:for="{{goodsData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}" data-index="{{index}}">
+        <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.mainPic}}"></image>
+        <text class="goods-dtitle">{{item.dtitle}}</text>
+        <text class="goods-sym">￥</text>
+        <text class="goods-actual">{{item.actualPrice}}</text>
+        <text class="goods-plan">卷后价</text>
+        <!-- <text class="goods-original">￥{{item.originalPrice}}</text> -->
+    </view>
+</scroll-view>
