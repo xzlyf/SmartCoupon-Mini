@@ -5,6 +5,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        parameter: [{
+            id: 1,
+            name: '淘宝',
+            checked: true
+        }, {
+            id: 2,
+            name: '京东',
+            checked: false
+        }, {
+            id: 3,
+            name: '拼多多',
+            checked: false
+        }],
+        typeId: 1,//默认选中淘宝搜索
         //显示控制
         hotTagShowView: false,
         historyTagShowView: false,
@@ -23,7 +37,7 @@ Page({
         if (temp != "") {
             this.setData({
                 "historyWords": temp,
-                "historyTagShowView":true
+                "historyTagShowView": true
             })
         }
         //获取热搜词
@@ -103,7 +117,7 @@ Page({
         }
         this.setData({
             'hotWord': temp,
-            'hotTagShowView':true
+            'hotTagShowView': true
         })
     },
     /**
@@ -125,15 +139,33 @@ Page({
         wx.setStorageSync(app.globalData.save_history_word, this.data.historyWords)
         this.setData({
             "historyWords": this.data.historyWords,
-            "historyTagShowView":true
+            "historyTagShowView": true
         })
 
         //跳转结果页
         wx.redirectTo({
-          url: '../searchTarget/target?keyword='+this.data.searchText,
+            url: '../searchTarget/target?keyword=' + this.data.searchText+"&typeId="+this.data.typeId,
         })
-    }
-
+    },
+    /**
+     * 搜索模式切换点击事件
+     */
+    parameterTap: function (e) {
+        var that = this
+        var this_checked = e.currentTarget.dataset.id
+        var parameterList = this.data.parameter
+        for (var i = 0; i < parameterList.length; i++) {
+            if (parameterList[i].id == this_checked) {
+                parameterList[i].checked = true; //当前点击的位置为true即选中
+            } else {
+                parameterList[i].checked = false; //其他的位置为false
+            }
+        }
+        that.setData({
+            parameter: parameterList,
+            typeId :this_checked
+        })
+    },
 
 
 })

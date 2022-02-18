@@ -1,8 +1,12 @@
 <!--pages/search/search.wxml-->
 <!-- 搜索框 -->
-<view>
-    <view>
-        <view class="weui-search-bar">
+<view class="searchBar">
+    <view class="searchType">
+        <block wx:for="{{parameter}}" wx:key="parameter">
+            <text class='{{item.checked?"searchType-item-checked":"searchType-item"}}' data-id='{{item.id}}' bindtap='parameterTap'>{{item.name}}</text>
+        </block>
+    </view>
+    <view class="weui-search-bar">
             <view class="weui-search-bar__form">
                 <!-- 搜索框 -->
                 <view class="weui-search-bar__box">
@@ -13,7 +17,6 @@
             <!-- 搜索按钮,调用搜索查询方法 -->
             <view class="weui-search-bar__cancel-btn" bindtap='toSearch'>搜索</view>
         </view>
-    </view>
 </view>
 <!-- 搜索词 -->
 <view style="float: left;"  class="{{historyTagShowView?'common_view_show':'common_view_hide'}}">

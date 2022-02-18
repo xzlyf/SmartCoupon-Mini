@@ -6,6 +6,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        parameter: [{
+            id: 1,
+            name: '淘宝',
+            checked: true
+        }, {
+            id: 2,
+            name: '京东',
+            checked: false
+        }, {
+            id: 3,
+            name: '拼多多',
+            checked: false
+        }],
+        typeId:1,//默认选中淘宝搜索
         searchText: '',
         // 商品实体
         goodsData: {},
@@ -16,8 +30,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.changeParameterTag(options.typeId)
         this.setData({
-            searchText: options.keyword
+            searchText: options.keyword,
         })
         this.getSearch()
     },
@@ -119,6 +134,31 @@ Page({
         var bean = encodeURIComponent(JSON.stringify(this.data.goodsData.list[v.currentTarget.dataset.index]))
         wx.navigateTo({
             url: '../goodsDetail/goodsDetail?bean=' + bean,
+        })
+    },
+     /**
+     * 搜索模式切换点击事件
+     */
+    parameterTap: function (e) {
+        var typeId = e.currentTarget.dataset.id
+        this.changeParameterTag(typeId)
+    },
+    /**
+     * 改变当前搜索模式
+     * @param {Integer}} typeId 
+     */
+    changeParameterTag:function(typeId){
+        var parameterList = this.data.parameter 
+        for (var i = 0; i < parameterList.length; i++) {
+            if (parameterList[i].id == typeId) {
+                parameterList[i].checked = true; //当前点击的位置为true即选中
+            } else {
+                parameterList[i].checked = false; //其他的位置为false
+            }
+        }
+        this.setData({
+            parameter: parameterList,
+            typeId:typeId
         })
     },
     /**
