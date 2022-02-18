@@ -18,17 +18,19 @@ Page({
             name: '拼多多',
             checked: false
         }],
-        typeId: 1, //默认选中淘宝搜索
+        typeId: 1, //选中的搜索模式，默认淘宝
+        currentId: 1, //当前搜索模式
         //显示控制
         hotTagShowView: false,
         historyTagShowView: false,
-        tagShowView:true,
+        tagShowView: true,
         //相关词
         historyWords: [],
         hotWord: [],
         searchText: '',
         // 商品实体
-        goodsData: {},
+        goodsTbData: {}, //淘宝、天猫
+        goodsJdData: {}, //jd商品
         pageNum: 0,
     },
 
@@ -144,7 +146,7 @@ Page({
         this.setData({
             "historyWords": this.data.historyWords,
             "historyTagShowView": true,
-            "tagShowView":false
+            "tagShowView": false
         })
 
         //清空展示数据
@@ -152,7 +154,7 @@ Page({
             title: '正在搜索...',
         })
         this.setData({
-            goodsData: {},
+            goodsTbData: {},
             pageNum: 0
         })
         this.getSearch()
@@ -197,6 +199,28 @@ Page({
         wx.showLoading({
             title: '正在搜索...',
         })
+        switch (self.data.typeId) {
+            case 1:
+                console.log("搜淘宝")
+                self.data.currentId = 1
+                this.searchByTaobao(self)
+                break
+            case 2:
+                console.log("搜京东")
+                self.data.currentId = 2
+                this.searchByJD(self)
+                break
+            case 3:
+                console.log("搜拼多多")
+                self.data.currentId = 3
+                break
+        }
+    },
+
+    /**
+     * 淘宝天猫搜索
+     */
+    searchByTaobao: function (self) {
         wx.request({
             url: app.globalData.appServerByDataokeRelay,
             method: 'GET',
@@ -208,7 +232,7 @@ Page({
                 pageId: self.data.pageNum,
                 pageSize: 20,
                 keyWords: self.data.searchText,
-                hasCoupon:1
+                hasCoupon: 1 //1有券，默认全部
             },
             success: function (res) {
                 wx.hideLoading()
@@ -230,24 +254,21 @@ Page({
                     return
                 }
                 var data = res.data.data
-                // self.setData({
-                //     goodsData:data
-                // })
 
                 if (self.data.pageNum == 1) {
                     self.setData({
-                        goodsData: data,
+                        goodsTbData: data,
                     })
                 } else {
                     //获取原始列表
-                    var old = self.data.goodsData;
+                    var old = self.data.goodsTbData;
                     //获取新列表
                     var arr = data.list;
                     //新列表数据与原列表数据合并
                     var newArr = old.list.concat(arr);
                     old.list = newArr
                     self.setData({
-                        goodsData: old,
+                        goodsTbData: old,
                     })
                 }
 
@@ -266,16 +287,96 @@ Page({
     },
 
     /**
+     * 京东联盟搜索
+     */
+    searchByJD: function (self) {
+        wx.request({
+            url: app.globalData.appServerByDataokeRelay,
+            method: 'GET',
+            data: {
+                api: "/api/dels/jd/goods/search",
+                appKey: app.globalData.appKeyByDataoke,
+                version: "v1.0.0",
+                pageId: self.data.pageNum,
+                pageSize: 20,
+                isCoupon: 1, //1有优惠券，默认全部
+                keyword: self.data.searchText,
+                // owner:"g",//g自营，p代销
+            },
+            success: function (res) {
+                wx.hideLoading()
+                if (res.statusCode != 200) {
+                    wx.showToast({
+                        title: 'API异常',
+                        duration: 2500
+                    })
+                    self.data.pageNum-- //请求失败，复原页数
+                    return
+                }
+                if (res.data.code != 0) {
+                    wx.showModal({
+                        showCancel: false,
+                        title: "异常",
+                        content: res.data.msg
+                    })
+                    self.data.pageNum-- //请求失败，复原页数
+                    return
+                }
+                var data = res.data.data
+                //如果没有主图随便拿一张图片顶上
+
+
+                //分页数据追加数组末尾
+                if (self.data.pageNum == 1) {
+                    self.setData({
+                        goodsJdData: data,
+                    })
+                } else {
+                    //获取原始列表
+                    var old = self.data.goodsJdData;
+                    //获取新列表
+                    var arr = data.list;
+                    //新列表数据与原列表数据合并
+                    var newArr = old.list.concat(arr);
+                    old.list = newArr
+                    self.setData({
+                        goodsJdData: old,
+                    })
+                }
+            },
+            fail: function (ex) {
+                wx.hideLoading()
+            }
+        })
+    },
+
+
+    /**
      * 跳转商品详情页
      * @param goodsId  淘宝商品Id
      */
     toGoodsDetail: function (v) {
         //商品单品详情数据，详情页不再新请求详情数据
-        // this.data.goodsData.list[v.currentTarget.dataset.index]
+        // this.data.goodsTbData.list[v.currentTarget.dataset.index]
         //序列化数据进行传输给详情页，先json编码然后url在此编码传输
-        var bean = encodeURIComponent(JSON.stringify(this.data.goodsData.list[v.currentTarget.dataset.index]))
-        wx.navigateTo({
-            url: '../goodsDetail/goodsDetail?bean=' + bean,
-        })
+
+        switch (this.data.currentId) {
+            case 1:
+                var bean = encodeURIComponent(JSON.stringify(this.data.goodsTbData.list[v.currentTarget.dataset.index]))
+                wx.navigateTo({
+                    url: '../goodsDetail/goodsDetail?bean=' + bean,
+                })
+                break
+            case 2:
+                var bean = encodeURIComponent(JSON.stringify(this.data.goodsJdData.list[v.currentTarget.dataset.index]))
+                wx.navigateTo({
+                    url:"../goodsJdDetail/jdDetail?bean="+bean
+                })
+                break
+            case 3:
+                break
+        }
+
+
     },
 })

@@ -42,12 +42,23 @@
 </view>
 <!-- 商品列表 -->
 <scroll-view class="goods-scroll-view" scroll-y="true" enable-back-to-top="true">
-    <view class="goods-view" wx:for="{{goodsData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}" data-index="{{index}}">
+    <!-- 淘宝天猫商品列表 -->
+    <view class="goods-view" wx:for="{{goodsTbData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-id="{{item.id}}" data-index="{{index}}">
         <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.mainPic}}"></image>
         <text class="goods-dtitle">{{item.dtitle}}</text>
         <text class="goods-sym">￥</text>
         <text class="goods-actual">{{item.actualPrice}}</text>
         <text class="goods-plan">卷后价</text>
+        <!-- <text class="goods-original">￥{{item.originalPrice}}</text> -->
+    </view>
+    <!-- 京东商品列表 -->
+    <view class="goods-view" wx:for="{{goodsJdData.list}}" wx:key="unique" bindtap="toGoodsDetail" data-index="{{index}}">
+        <!-- <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.whiteImage?item.whiteImage:item.imageUrlList[0]}}"></image> -->
+        <image class="goods-img" mode="scaleToFill" lazy-load="true" src="{{item.imageUrlList[0]}}"></image>
+        <text class="goods-dtitle">{{item.skuName}}</text>
+        <text class="goods-sym">￥</text>
+        <text class="goods-actual">{{item.lowestCouponPrice}}</text>
+        <!-- <text class="goods-plan">卷后价</text> -->
         <!-- <text class="goods-original">￥{{item.originalPrice}}</text> -->
     </view>
 </scroll-view>

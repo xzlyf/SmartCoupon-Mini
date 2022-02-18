@@ -152,10 +152,18 @@ page{
   color: #e74c3c;
   font-size: 28rpx;
   margin-right: 20rpx;
+  margin-left: 10rpx;
 }
 
 .goods-original {
   color: gray;
   font-size: 24rpx;
   text-decoration: line-through
+}
+.goods-owner{
+  position: relative;
+  right: 0;
+  top: 0;
+  font-size: 20rpx;
+  border: 1px solid red;
 }

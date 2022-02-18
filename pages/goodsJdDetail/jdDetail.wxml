@@ -1,0 +1,84 @@
+<!--pages/goodsJdDetail/jdDetail.wxml-->
+<view>
+    <scroll-view>
+
+        <view class="banner">
+            <swiper class="banner-swiper" indicator-dots="true" indicator-color="#c0c0c0" indicator-active-color="#696969" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                <block wx:for-items="{{pics}}" wx:key="unquie">
+                    <swiper-item>
+                        <image src="{{item}}" class="banner-image" mode="aspectFill" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="content">
+            <text class="content-title">{{detail.title}}</text>
+            <view class="content-price">
+                <text class="goods-sym">￥</text>
+                <text class="goods-actual">{{detail.actualPrice}}</text>
+                <text class="goods-plan"> 卷后价</text>
+                <text class="goods-original">￥{{detail.originalPrice}}</text>
+                <text class="goods-sale">月销{{detail.monthSales}}件</text>
+            </view>
+            <view class="{{showGiftView?'content-gift':'common_view_hide'}}">
+                <text class="gift-name">优惠</text>
+                <text class="gift-item" wx:for="{{detail.specialText}}" wx:key="unique">{{item}}</text>
+            </view>
+        </view>
+        <view class="content-desc">
+            <view style="width: 180rpx;text-align: center;display: inline-block;border-right:1px dashed gray;">
+                <text style="font-size: 40rpx;font-weight: 800;color:#e74c3c;">{{detail.couponPrice}}</text>
+                <text style="color:#e74c3c;font-size: 22rpx;">元</text>
+                <text style="display: block;font-size: 22rpx;color: gray;">满{{detail.originalPrice}}元可用</text>
+            </view>
+            <view style="display: inline-block;margin-left: 24rpx;">
+                <text style="display: block;font-size: 32rpx;color: #5a5a5a;font-weight: 600;">专享优惠券</text>
+                <text style="font-size: 22rpx;color: gray;">{{detail.couponStartTime}}</text>
+                <text>-</text>
+                <text style="font-size: 22rpx;color: gray;">{{detail.couponEndTime}}</text>
+            </view>
+        </view>
+        <view class="content-desc">
+            <text class="content-desc-item">商家信息</text>
+            <text class="content-desc-text">{{detail.shopName}}</text>
+        </view>
+        <view class="content-desc">
+            <text class="content-desc-item">商品详情</text>
+            <text class="content-desc-text">{{detail.desc}}</text>
+        </view>
+        <!-- 空白view预留显示 -->
+        <view style="height: 100rpx;" />
+    </scroll-view>
+
+
+    <!-- 底部控制区 -->
+    <view class="footer-box">
+        <view class="cart">
+            <icon class="iconfont icon-gouwuche"></icon>
+            <text style="line-height: 110rpx;">收藏</text>
+        </view>
+        <view class="planBtn">
+            <text class="couponBtn" bindtap="couponClick" data-goodsid="{{detail.goodsId}}">立即领卷</text>
+            <text class="shareBtn">分享拿佣金</text>
+        </view>
+    </view>
+
+    <!-- 遮罩层 -->
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="cancelMask"></view>
+    <!-- 弹出层 -->
+    <view class="modalDlg" wx:if="{{showModal}}">
+        <view class="dialogTitle">
+            <text style="margin-left: 20rpx;">优惠券已生成</text>
+        </view>
+        <view class="dialogContent">
+            <text style="font-weight: bold;color: black;">暂不支持跳转淘宝APP</text>
+            <text>手动领卷步骤：</text>
+            <text>①复制淘口令</text>
+            <text>②打开手机淘宝APP</text>
+            <text>③等待淘口令识别</text>
+            <text>④领取即可</text>
+        </view>
+        <view class="secretText">{{secretText}}</view>
+        <view bindtap="okBtn" class="ok" data-secret="{{secretText}}">复制淘口令</view>
+    </view>
+</view>

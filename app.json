@@ -4,7 +4,8 @@
         "pages/search/search",
         "pages/goodsDetail/goodsDetail",
         "pages/jd_coupon/index",
-        "pages/testPage/test"
+        "pages/testPage/test",
+        "pages/goodsJdDetail/jdDetail"
     ],
     "window": {
         "backgroundTextStyle": "light",
