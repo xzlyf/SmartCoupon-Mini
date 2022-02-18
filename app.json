@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/search/search",
         "pages/goodsDetail/goodsDetail",
-        "pages/searchTarget/target"
+        "pages/searchTarget/target",
+        "pages/jd_coupon/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

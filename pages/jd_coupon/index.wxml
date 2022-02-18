@@ -1,0 +1,2 @@
+<!--pages/testpage/test.wxml-->
+<web-view src="{{couponLink}}"></web-view>
